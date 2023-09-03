@@ -1,1 +1,1 @@
-# CI-CD-Project
+# DevSecOps-Project

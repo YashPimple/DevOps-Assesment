@@ -1,0 +1,7 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: my-build-pipeline-run  # Specify your desired name here
+spec:
+  pipelineRef:
+    name: build-pipeline

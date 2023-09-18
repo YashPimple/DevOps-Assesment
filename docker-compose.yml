@@ -21,4 +21,9 @@ services:
       - db
     links:
       - db
+    environment :
+            DB_USER: root
+            DB_NAME: noteapp
+            DB_PASSWORD: password
+            DB_HOST: db
     

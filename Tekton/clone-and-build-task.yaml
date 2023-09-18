@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: clone-and-build
+spec:
+  steps:
+    - name: clone
+      image: alpine/git
+      script: |
+        #!/bin/sh
+        git clone https://github.com/YashPimple/Ruby_on_rails.git /workspace/source-code
+    - name: build
+      image: docker
+      script: |
+        #!/bin/sh
+        docker build -t yashpimple22/ruby_rails /workspace/source-code

@@ -2,6 +2,10 @@
 
 This assessment involves deploying a simple web application with DynamoDB using Docker, Kubernetes, and ArgoCD. Follow the steps below to complete the tasks.
 
+## Demo Video
+
+For a visual demonstration of the implementation, please watch the **demo video** [here](https://youtu.be/0BKfSIxGMVE).
+
 ## Step 1: Docker
 
 ### Task
@@ -103,4 +107,3 @@ Set up Tekton pipelines and the Tekton dashboard. The pipeline should download t
 4. Create a PipelineRun ([build-pipeline-run.yaml](https://github.com/YashPimple/Ruby_on_rails/blob/main/Tekton/build-pipeline-run.yaml)) to trigger the pipeline.
 5. Access the Tekton dashboard and manually run the pipeline.
 6. Verify that the source code is downloaded, the image is built, and it is pushed to Docker Hub.
-

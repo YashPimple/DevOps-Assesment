@@ -17,8 +17,8 @@ services:
     links:
       - db
     environment :
-            access_key_id: AKIAQRE7IFUOKMFPOYQY
-            secret_access_key: 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
+            access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             DB_USER: root
             DB_REGION: ap-northeast-1
              # DB_NAME: noteapp

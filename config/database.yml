@@ -8,10 +8,15 @@ default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  database: <%= ENV ['DB_NAME']  %>
-  username: <%= ENV ['DB _USER'] %>
-  password: <%= ENV [ 'DB_PASSWORD' ] %>
-  host: <%= ENV ['DB_HOST'] %>
+  # database: <%= ENV ['DB_NAME']  %>
+  # username: <%= ENV ['DB _USER'] %>
+  # password: <%= ENV [ 'DB_PASSWORD' ] %>
+  # host: <%= ENV ['DB_HOST'] %>
+  adapter: amazon_dynamodb
+  access_key_id: <%= ENV ['access_key_id'] %>
+  secret_access_key: <%= ENV ['secret_access_key'] %>
+  region: <%= ENV ['DB_REGION'] %> 
+  endpoint: http://dynamodb:8000 
 
 development:
   <<: *default

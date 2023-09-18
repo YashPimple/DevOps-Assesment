@@ -1,13 +1,19 @@
-FROM ruby:2.7.4
+FROM ruby:3.1
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-RUN mkdir /noteapp
+RUN mkdir /app
+WORKDIR /app
 
-WORKDIR /noteapp
+COPY Gemfile Gemfile.lock ./
 
-ADD Gemfile /noteapp/Gemfile
-ADD Gemfile.lock /noteapp/Gemfile.lock
+RUN apt-get update && apt-get install -y nodejs yarn
 
+RUN gem install bundler
 RUN bundle install
 
-ADD . /noteapp
+COPY . .
+
+RUN rake assets:precompile
+
+EXPOSE 3000
+
+CMD ["rails", "server", "-b", "0.0.0.0"]

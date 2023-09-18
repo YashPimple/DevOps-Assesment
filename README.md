@@ -12,29 +12,21 @@ Build a Dockerfile for deploying a simple web application with DynamoDB enabled.
 2. Write a Dockerfile to containerize the Rails application.
    ```Dockerfile
    FROM ruby:3.1
-
-   # Create directory for the app
    RUN mkdir /app
    WORKDIR /app
 
-   # Copy Gemfile and Gemfile.lock
    COPY Gemfile Gemfile.lock ./
 
-   # Install dependencies
    RUN apt-get update && apt-get install -y nodejs yarn
    RUN gem install bundler
    RUN bundle install
 
-   # Copy the Rails application code
    COPY . .
 
-   # Precompile assets
    RUN rake assets:precompile
 
-   # Expose port
    EXPOSE 3000
 
-   # Run Rails server
    CMD ["rails", "server", "-b", "0.0.0.0"]
 3. Build Docker container for the Rails application and DynamoDB and push it on Docker-Hub
    

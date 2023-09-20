@@ -3,11 +3,9 @@
 This assessment involves deploying a simple web application with DynamoDB using Docker, Kubernetes, and ArgoCD. Follow the steps below to complete the tasks.
 
 ## Demo Video
-
 For a visual demonstration of the implementation, please watch the **demo video** [here](https://youtu.be/0BKfSIxGMVE).
 
 ## Step 1: Docker
-
 ### Task
 Build a Dockerfile for deploying a simple web application with DynamoDB enabled. The application and the database should run on different containers.
 

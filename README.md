@@ -1,9 +1,6 @@
 # DevOps Assessment
 
-This assessment involves deploying a simple web application with DynamoDB using Docker, Kubernetes, and ArgoCD. Follow the steps below to complete the tasks.
-
-## Demo Video
-For a visual demonstration of the implementation, please watch the **demo video** [here](https://youtu.be/0BKfSIxGMVE).
+This assessment involves deploying a simple web application with an Database using Docker, Kubernetes, and ArgoCD. Follow the steps below to complete the tasks.
 
 ## Step 1: Docker
 ### Task

@@ -40,21 +40,28 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: dynamodb
-  namespace: ruby-rails  
+  name: postgres-db
+  namespace: ruby-rails
 spec:
-  serviceName: dynamodb
-  replicas: 1  
+  serviceName: postgres
+  replicas: 1
   selector:
     matchLabels:
-      app: dynamodb
+      app: postgres
   template:
     metadata:
       labels:
-        app: dynamodb
+        app: postgres
     spec:
       containers:
-      - name: dynamodb
-        image: amazon/dynamodb-local
+      - name: postgres
+        image: postgres:latest
+        env:
+          - name: POSTGRES_DB
+            value: "db1"
+          - name: POSTGRES_USER
+            value: "user1"
+          - name: POSTGRES_PASSWORD
+            value: "password"
         ports:
-        - containerPort: 8000
+        - containerPort: 5432

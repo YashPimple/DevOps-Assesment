@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: git-clone-task
+spec:
+  params:
+    - name: gitrepo
+      type: object
+      properties:
+        url:
+          type: string
+  steps:
+    - name: git-clone
+      image: alpine/git
+      script: |
+        #!/bin/sh
+        git clone $(params.gitrepo.url) .

@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-and-push-task
+spec:
+  steps:
+    - name: build-and-push
+      image: gcr.io/kaniko-project/executor:latest
+      env:
+        - name: DOCKER_CONFIG
+          value: /tekton/home/.docker/
+      volumeMounts:
+        - name: docker-config
+          mountPath: /tekton/home/.docker/
+      script: |
+        #!/bin/sh
+        echo "Building Docker image..."
+        /kaniko/executor --context $(params.context-dir) --dockerfile $(params.dockerfile) --destination $(params.docker-image)
+  volumes:
+    - name: docker-config
+      secret:
+        secretName: regcred

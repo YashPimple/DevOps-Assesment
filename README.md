@@ -106,9 +106,32 @@ Set up Tekton pipelines and the Tekton dashboard. The pipeline should download t
 
 ## Working
 
+- Start with installing Tekton
 ```bash
 kubectl apply --filename \
 https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
+```
+
+- Create a Docker Hub Secret
+```bash
+kubectl create secret docker-registry regcred \
+  --docker-server=https://index.docker.io/v1/ \
+  --docker-username="your-docker-username" \
+  --docker-password="your-docker-password"
+```
+
+- Apply the changes
+```bash
+kubectl apply -f clone-task.yaml
+kubectl apply -f clone-taskrun.yaml
+kubectl apply -f build-and-push-task.yaml
+kubectl apply -f build-and-push-pipeline.yaml
+kubectl apply -f build-and-push-pipelinerun.yaml
+```
+
+- Run the Pipeline 
+```bash
+tkn pipeline start build-and-push-pipeline --param gitrepo=https://github.com/YashPimple/Ruby_on_rails.git --param context-dir="Ruby_on_rails" --param dockerfile="./Dockerfile" --param docker-image="https://hub.docker.com/r/yashpimple22/railsapp:latest"
 ```
 
 

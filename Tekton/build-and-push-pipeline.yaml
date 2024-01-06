@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-and-push-pipeline
+spec:
+  tasks:
+    - name: clone-repo
+      taskRef:
+        name: git-clone-task
+    - name: build-and-push-image
+      taskRef:
+        name: build-and-push-task
+      runAfter:
+        - clone-repo

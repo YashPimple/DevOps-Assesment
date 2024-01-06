@@ -15,3 +15,5 @@ spec:
       script: |
         #!/bin/sh
         git clone $(params.gitrepo.url) .
+        ls -la
+        cat Dockerfile

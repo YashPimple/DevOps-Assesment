@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: build-and-push-pipeline-run
+spec:
+  pipelineRef:
+    name: build-and-push-pipeline
+  serviceAccountName: default
+  resources:
+    - name: git-source
+      resourceSpec:
+        type: git
+        params:
+          - name: url
+            value: "https://github.com/YashPimple/Ruby_on_rails.git"
+  params:
+    - name: gitrepo
+      value:
+        url: "https://github.com/YashPimple/Ruby_on_rails.git"
+    - name: context-dir
+      value: "."
+    - name: dockerfile
+      value: "./Dockerfile"
+    - name: docker-image
+      value: "https://hub.docker.com/r/yashpimple22/railsapp:latest"
+  secrets:
+    - name: regcred

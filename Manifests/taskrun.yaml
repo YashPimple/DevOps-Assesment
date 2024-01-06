@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: git-clone-task-run
+spec:
+  taskRef:
+    name: git-clone-task
+  params:
+    - name: gitrepo
+      value:
+        url: "https://github.com/YashPimple/Ruby_on_rails.git"

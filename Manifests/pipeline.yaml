@@ -13,24 +13,13 @@ spec:
   - name: shared-data
     description: | 
       This workspace contains the cloned repo files, so they can be read by the next task.
-  - name: git-credentials
-    description: My ssh credentials
   tasks:
   - name: fetch-source
     taskRef:
-      name: git-clone
+      name: git-clone-task
     workspaces:
     - name: output
       workspace: shared-data
-    - name: ssh-directory
-      workspace: git-credentials
     params:
     - name: url
       value: $(params.repo-url)
-  - name: show-readme
-    runAfter: ["fetch-source"]
-    taskRef:
-      name: show-readme
-    workspaces:
-    - name: source
-      workspace: shared-data
